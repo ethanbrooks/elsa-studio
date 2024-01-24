@@ -1,9 +1,9 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
+﻿FROM mcr.microsoft.com/dotnet/aspnet:8.0-bookworm-slim AS base
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
+EXPOSE 80/tcp
+EXPOSE 443/tcp
 
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0-bookworm-slim AS build
 WORKDIR /src
 COPY ["Elsa.Studio.ServerApp/Elsa.Studio.ServerApp.csproj", "Elsa.Studio.ServerApp/"]
 RUN dotnet restore "Elsa.Studio.ServerApp/Elsa.Studio.ServerApp.csproj"
